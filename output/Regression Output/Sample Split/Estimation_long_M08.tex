@@ -1,0 +1,77 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=2cm,right=2cm,top=0cm,bottom=1cm]{geometry}
+\usepackage{booktabs}
+\author{Peer Lasse Hinrichsen}
+\begin{document}
+\begingroup
+\centering
+\begin{tabular}{lcccc}
+   \tabularnewline \midrule \midrule
+   Dependent Variable: & \multicolumn{4}{c}{moves}\\
+   Model:                                           & (1)             & (2)             & (3)             & (4)\\  
+   \midrule
+   \emph{Variables}\\
+   log(distance)                                    & -2.364$^{***}$  & -2.663$^{***}$  &                 &   \\   
+                                                    & (0.0063)        & (0.0048)        &                 &   \\   
+   log(bevoelkerung\_start)                         & 0.9691$^{***}$  &                 &                 &   \\   
+                                                    & (0.0030)        &                 &                 &   \\   
+   log(bevoelkerung\_end)                           & 1.008$^{***}$   &                 &                 &   \\   
+                                                    & (0.0030)        &                 &                 &   \\   
+   log\_inzidenz\_start                             & 0.0236$^{***}$  & -0.0208$^{***}$ & -0.0194$^{***}$ & -0.0120$^{***}$\\   
+                                                    & (0.0030)        & (0.0033)        & (0.0017)        & (0.0017)\\   
+   log\_inzidenz\_end                               & 0.0183$^{***}$  & 0.0014          & 0.0024          & -0.0015\\   
+                                                    & (0.0029)        & (0.0032)        & (0.0015)        & (0.0016)\\   
+   log(startanteil\_homeoffice\_WZ)                 & -5.006$^{***}$  &                 &                 &   \\   
+                                                    & (0.0466)        &                 &                 &   \\   
+   log(endanteil\_homeoffice\_WZ)                   & -5.831$^{***}$  &                 &                 &   \\   
+                                                    & (0.0437)        &                 &                 &   \\   
+   Afd\_dummy\_start                                & 0.1508$^{***}$  &                 &                 &   \\   
+                                                    & (0.0129)        &                 &                 &   \\   
+   M08\_start                                       & -0.1674$^{***}$ & -0.1749$^{***}$ & -0.1576$^{***}$ & -0.1515$^{***}$\\   
+                                                    & (0.0119)        & (0.0117)        & (0.0068)        & (0.0081)\\   
+   Afd\_dummy\_end                                  & 0.1319$^{***}$  &                 &                 &   \\   
+                                                    & (0.0129)        &                 &                 &   \\   
+   M08\_end                                         & -0.2744$^{***}$ & -0.2898$^{***}$ & -0.2769$^{***}$ & -0.2244$^{***}$\\   
+                                                    & (0.0130)        & (0.0126)        & (0.0080)        & (0.0100)\\   
+   government\_dummy\_start                         & -0.2280$^{***}$ &                 &                 &   \\   
+                                                    & (0.0089)        &                 &                 &   \\   
+   government\_dummy\_end                           & -0.2505$^{***}$ &                 &                 &   \\   
+                                                    & (0.0097)        &                 &                 &   \\   
+   Afd\_dummy\_start $\times$ M08\_start            & 0.3000$^{***}$  & 0.2624$^{***}$  & 0.2439$^{***}$  & 0.2293$^{***}$\\   
+                                                    & (0.0152)        & (0.0142)        & (0.0083)        & (0.0080)\\   
+   Afd\_dummy\_end $\times$ M08\_end                & 0.3482$^{***}$  & 0.3360$^{***}$  & 0.3225$^{***}$  & 0.3326$^{***}$\\   
+                                                    & (0.0154)        & (0.0144)        & (0.0089)        & (0.0090)\\   
+   government\_dummy\_start $\times$ M08\_start     & 0.0845$^{***}$  & 0.1722$^{***}$  & 0.1532$^{***}$  & 0.1544$^{***}$\\   
+                                                    & (0.0102)        & (0.0094)        & (0.0061)        & (0.0061)\\   
+   government\_dummy\_end $\times$ M08\_end         & 0.1465$^{***}$  & 0.2404$^{***}$  & 0.2258$^{***}$  & 0.2245$^{***}$\\   
+                                                    & (0.0112)        & (0.0103)        & (0.0072)        & (0.0074)\\   
+   M08\_start\_W                                    &                 &                 &                 & 0.0084\\   
+                                                    &                 &                 &                 & (0.0085)\\   
+   M08\_end\_W                                      &                 &                 &                 & -0.1255$^{***}$\\   
+                                                    &                 &                 &                 & (0.0090)\\   
+   log\_inzidenz\_start\_W                          &                 &                 &                 & -0.0583$^{***}$\\   
+                                                    &                 &                 &                 & (0.0058)\\   
+   log\_inzidenz\_end\_W                            &                 &                 &                 & 0.0430$^{***}$\\   
+                                                    &                 &                 &                 & (0.0050)\\   
+   \midrule
+   \emph{Fixed-effects}\\
+   date                                             & Yes             & Yes             & Yes             & Yes\\  
+   start\_krs                                       &                 & Yes             & Yes             & Yes\\  
+   end\_krs                                         &                 & Yes             & Yes             & Yes\\  
+   obs                                              &                 &                 & Yes             & Yes\\  
+   \midrule
+   \emph{Fit statistics}\\
+   Observations                                     & 7,601,880       & 7,601,880       & 6,885,395       & 6,885,395\\  
+   Squared Correlation                              & 0.21780         & 0.34095         & 0.84096         & 0.84078\\  
+   \midrule \midrule
+   \multicolumn{5}{l}{\emph{Heteroskedasticity-robust standard-errors in parentheses}}\\
+   \multicolumn{5}{l}{\emph{Signif. Codes: ***: 0.01, **: 0.05, *: 0.1}}\\
+\end{tabular}
+\par\endgroup
+\end{document}

@@ -1,0 +1,80 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=2cm,right=2cm,top=0cm,bottom=1cm]{geometry}
+\usepackage{booktabs}
+\author{Peer Lasse Hinrichsen}
+\begin{document}
+\begingroup
+\centering
+\begin{tabular}{lcccccc}
+   \tabularnewline \midrule \midrule
+   Dependent Variable: & \multicolumn{6}{c}{Population mobility}\\
+   Model:                                           & (1)            & (2)            & (3)             & (4)            & (5)             & (6)\\  
+   \midrule
+   \emph{Variables}\\
+   (Intercept)                                      & 0.3542$^{***}$ &                &                 &                &                 &   \\   
+                                                    & (0.1354)       &                &                 &                &                 &   \\   
+   log(distance)                                    & -2.503$^{***}$ & -2.503$^{***}$ & -2.774$^{***}$  & -3.847$^{***}$ &                 &   \\   
+                                                    & (0.0040)       & (0.0041)       & (0.0068)        & (0.0031)       &                 &   \\   
+   log(population\_start)                           & 0.7067$^{***}$ & 0.7067$^{***}$ & 0.9458$^{***}$  &                &                 &   \\   
+                                                    & (0.0062)       & (0.0058)       & (0.0085)        &                &                 &   \\   
+   log(population\_end)                             & 0.7172$^{***}$ & 0.7172$^{***}$ & 0.9377$^{***}$  &                &                 &   \\   
+                                                    & (0.0062)       & (0.0058)       & (0.0085)        &                &                 &   \\   
+   log(incidence\_start)                            &                &                & 0.0653$^{***}$  & -0.0063        & -0.0063$^{***}$ & -0.0039$^{***}$\\   
+                                                    &                &                & (0.0069)        & (0.0059)       & (0.0009)        & (0.0009)\\   
+   log(incidence\_end)                              &                &                & 0.0675$^{***}$  & -0.0054        & -0.0050$^{***}$ & -0.0017$^{*}$\\   
+                                                    &                &                & (0.0069)        & (0.0059)       & (0.0009)        & (0.0009)\\   
+   log(share\_homeoffice\_WZ\_start)                &                &                & -8.342$^{***}$  &                &                 &   \\   
+                                                    &                &                & (0.1255)        &                &                 &   \\   
+   log(share\_homeoffice\_WZ\_end)                  &                &                & -8.558$^{***}$  &                &                 &   \\   
+                                                    &                &                & (0.1294)        &                &                 &   \\   
+   Afd\_dummy\_start                                &                &                & 0.2611$^{***}$  &                &                 &   \\   
+                                                    &                &                & (0.0417)        &                &                 &   \\   
+   Afd\_dummy\_end                                  &                &                & 0.1521$^{***}$  &                &                 &   \\   
+                                                    &                &                & (0.0404)        &                &                 &   \\
+   government\_dummy\_start                         &                &                & -0.0804$^{*}$   &                &                 &   \\   
+                                                    &                &                & (0.0474)        &                &                 &   \\   
+   government\_dummy\_end                           &                &                & -0.2131$^{***}$ &                &                 &   \\   
+                                                    &                &                & (0.0461)        &                &                 &   \\
+   \midrule      
+   M10\_start                                       &                &                & -0.0682         & -0.0060        & -0.0049         & 0.0071\\   
+                                                    &                &                & (0.0529)        & (0.0403)       & (0.0052)        & (0.0058)\\   
+   M10\_end                                         &                &                & -0.0223         & -0.0151        & -0.0162$^{***}$ & -0.0045\\   
+                                                    &                &                & (0.0517)        & (0.0403)       & (0.0052)        & (0.0058)\\   
+   Afd\_dummy\_start $\times$ M10\_start            &                &                & -0.0257         & 0.0204         & 0.0192$^{***}$  & 0.0119$^{**}$\\   
+                                                    &                &                & (0.0454)        & (0.0414)       & (0.0059)        & (0.0060)\\   
+   Afd\_dummy\_end $\times$ M10\_end                &                &                & -0.0476         & 0.0391         & 0.0402$^{***}$  & 0.0376$^{***}$\\   
+                                                    &                &                & (0.0439)        & (0.0413)       & (0.0058)        & (0.0060)\\   
+   government\_dummy\_start $\times$ M10\_start     &                &                & -0.1627$^{***}$ & -0.0026        & -0.0042         & -0.0054\\   
+                                                    &                &                & (0.0527)        & (0.0383)       & (0.0050)        & (0.0051)\\   
+   government\_dummy\_end $\times$ M10\_end         &                &                & -0.1862$^{***}$ & 0.0071         & 0.0090$^{*}$    & 0.0085$^{*}$\\   
+                                                    &                &                & (0.0513)        & (0.0383)       & (0.0050)        & (0.0051)\\   
+   M10\_start\_W                                    &                &                &                 &                &                 & -0.0032\\   
+                                                    &                &                &                 &                &                 & (0.0084)\\   
+   M10\_end\_W                                      &                &                &                 &                &                 & -0.0237$^{***}$\\   
+                                                    &                &                &                 &                &                 & (0.0086)\\   
+   log(incidence\_start)\_W                         &                &                &                 &                &                 & -0.0355$^{***}$\\   
+                                                    &                &                &                 &                &                 & (0.0041)\\   
+   log(incidence\_end)\_W                           &                &                &                 &                &                 & -0.0065\\   
+                                                    &                &                &                 &                &                 & (0.0041)\\   
+   \midrule
+   \emph{Fixed-effects}\\
+   time                                             &                & Yes            & Yes             & Yes            & Yes             & Yes\\  
+   origin                                           &                &                &                 & Yes            & Yes             & Yes\\  
+   destination                                      &                &                &                 & Yes            & Yes             & Yes\\  
+   origin-destination                               &                &                &                 &                & Yes             & Yes\\  
+   \midrule
+   \emph{Fit statistics}\\
+   Observations                                     & 8,800,000      & 8,800,000      & 8,800,000       & 8,800,000      & 8,083,405       & 8,083,405\\  
+   Squared Correlation                              & 0.47033        & 0.49603        & 0.54431         & 0.94151        & 0.99666         & 0.99674\\  
+   \midrule \midrule
+   \multicolumn{7}{l}{\emph{Heteroskedasticity-robust standard-errors in parentheses}}\\
+   \multicolumn{7}{l}{\emph{Signif. Codes: ***: 0.01, **: 0.05, *: 0.1}}\\
+\end{tabular}
+\par\endgroup
+\end{document}

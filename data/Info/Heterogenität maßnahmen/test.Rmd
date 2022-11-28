@@ -1,0 +1,131 @@
+---
+title: "Untersuchung zur Variabilität für einschlägige Coronamaßnahmen aus der Coronadatenplattform"
+author: "Peer Lasse Hinrichsen"
+date: "1 2 2022"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(readr)
+```
+
+```{r, echo = FALSE,results='hide',warning=FALSE,message=FALSE,error=FALSE}
+setwd("C:/Users/peerl/OneDrive/Desktop/Studium/Masterarbeit/Daten/Basisdaten")
+#märz 2020 bis november 2021
+covid_policy=read_csv("kr_massnahmen_oberkategorien03_20_15_11_21.csv") %>% na.omit() 
+#M_14-----------------------------------------------------------------------------------------
+M_14=covid_policy[covid_policy$m_code=="M14",-c(1:3,5:6)]
+sum(M_14[,-1]!=0 && M_14[,-1]!=1)
+#betrachte nur Maßnahme M14 (Reisebeschränkung Inland)
+active_days_M14=data.frame(rowSums(M_14[,-1]))
+```
+Maßnahme M14 (Reisebeschränkungen Inland) Beispielsweise Beschränkung in- und ausreise für bestimmte Bundesländer und generelle Reisebeschränkungen.
+
+```{r , echo=FALSE}
+plotdata=data.frame("region"=1:401,"active_days"=active_days_M14)
+colnames(plotdata)=c("region","active_days")
+ggplot(plotdata,aes(x=region,y=active_days))+geom_point()+geom_jitter(width=5,height=10,aes(color="random noise"))+labs(title ="Anzahl Tage mit M14 für 401 Regionen",x="Region",y="Anzahl Tage in denen M14 aktiv war")+geom_hline(aes(yintercept=175))+geom_text(aes(350,175,label = "175 Tage", vjust = 2))+theme_bw()
+
+```
+```{r, echo=FALSE }
+print(paste("Anzahl Regionen mit 30 oder mehr Tagen an denen M14 aktiv war: ",sum(active_days_M14>=30) ))
+print("Kreisschlüssel der jeweiligen Regionen :")
+M_14$ags5[active_days_M14>=30]
+
+print(paste("Anzahl Regionen mit 175 oder mehr Tagen an denen M14 aktiv war: ",sum(active_days_M14>=175)))
+
+print("Kreisschlüssel der jeweiligen Regionen")
+M_14$ags5[active_days_M14>=175]
+
+
+active_regions_M14=data.frame(colSums(M_14[,-1]))
+
+```
+Wir können erkennen, dass es insgesamt 58 Regionen gibt, in denen Reisebeschränkungen (M14) für insgesamt 175 oder mehr Tage aktiv war. Es gibt 94 Regionen in denen dei beschränkung 30 tage oder länger angtiv war. Die Regionen in denen die Beschränkung so lange aktiv waren, sind im Datensatz im Bereich der zweihunderter und ende der dreihunderter stellen angesiedelt (nachschauen welche und Budnesländer Rausfinden). Es fällt auf, dass die allermeisten Kreise diese Maßnahme im Beobachtungszeitraum nicht aktiviert haben. 
+
+```{r,echo=FALSE}
+plotdata=data.frame("day"=1:625,active_regions_M14)
+colnames(plotdata)=c("day","active_region")
+ggplot(plotdata,aes(x=day,y=active_region))+geom_point()+geom_jitter(width=5,height=5,aes(color="random noise"))+labs(title ="Anzahl Regionen mit M14 für März 2020 bis November 2021",x="Tage",y="Anzahl Regionen mit M14 aktiv")+geom_hline(aes(yintercept=58))+geom_text(aes(550,58,label = "58 Regionen", vjust = -1))+theme_bw()
+```
+
+```{r, echo=FALSE}
+print(paste(sum(active_regions_M14>= 58),"tage mit mehr als 58 regionen mit M14 "))
+
+```
+Hier sehen wir, dass es ab mitte März einen zusammenhängenden Zeitraum gibt an denen in 58 oder mehr Regionen M14 aktiv war.
+```{r,echo =FALSE}
+M_15=covid_policy[covid_policy$m_code=="M15",-c(1:3,5:6)]
+sum(M_15[,-1]!=0 && M_15[,-1]!=1)
+#betrachte nur maßnahme M15 (reisebeschränkung Ausland)
+active_days_M15=data.frame(rowSums(M_15[,-1]))
+```
+```{r, echo=FALSE}
+plotdata=data.frame("region"=1:401,"active_days"=active_days_M15)
+colnames(plotdata)=c("region","active_days")
+ggplot(plotdata,aes(x=region,y=active_days))+geom_point()+geom_jitter(width=5,height=2,aes(color="random noise"))+labs(title ="Anzahl Tage mit M15 für 401 Regionen",x="Region",y="Anzahl Tage in denen M15 aktiv war")+geom_hline(aes(yintercept=30))+geom_text(aes(350,30,label = "30 Tage", vjust = -1))+theme_bw()
+```
+M15 ( Reisebeschränkung Ausland) realtiv uninteressant, da nur wenige Bundesländer für kurze Zeit diese Maßnahmen aktiviert hatten. Außerdem ist M14 besser geignet um auf die Mobilitätsentscheidungen auf Kreisebene zu wirken.
+```{r, echo=FALSE}
+threshold=30
+print(paste(sum(active_days_M15>threshold),"Regionen mit 30 oder mehr Tagen an denen M15 aktiv war"))
+
+
+
+active_regions_M15=data.frame(colSums(M_15[,-1]))
+```
+
+```{r, echo=FALSE}
+plotdata=data.frame("day"=1:625,active_regions_M15)
+colnames(plotdata)=c("day","active_region")
+ggplot(plotdata,aes(x=day,y=active_region))+geom_point()+geom_jitter(width=5,height=2,aes(color="random noise"))+labs(title ="Anzahl Regionen mit M15 für März 2020 bis November 2021",x="Tage",y="Anzahl Regionen mit M15 aktiv")+geom_hline(aes(yintercept=30))+geom_text(aes(550,30,label = "30 Regionen", vjust = -1))+theme_bw()
+
+```
+```{r, echo=FALSE}
+print(paste(sum(active_regions_M15> 30),"tage mit mehr als 30 regionen mit M15 "))
+
+```
+
+```{r, echo =FALSE}
+M_17=covid_policy[covid_policy$m_code=="M17",-c(1:3,5:6)]
+sum(M_17[,-1]!=0 && M_17[,-1]!=1)
+#betrachte nur Maßnahme M17 (Arbeitsplatzbeschränkung)
+active_days_M17=data.frame(rowSums(M_17[,-1]))
+```
+
+
+```{r,echo=FALSE}
+plotdata=data.frame("region"=1:401,"active_days"=active_days_M17)
+colnames(plotdata)=c("region","active_days")
+ggplot(plotdata,aes(x=region,y=active_days))+geom_point()+geom_jitter(width=5,height=20,aes(color="random noise"))+labs(title ="Anzahl Tage mit M17 für 401 Regionen",x="Region",y="Anzahl Tage in denen M17 aktiv war")+geom_hline(aes(yintercept=60))+geom_text(aes(360,60,label = "60 Tage", vjust = 2))+theme_bw()
+```
+
+Maßnahme M17 ( Arbeitsplatzbeschränkungen) Beispielsweise Homeoffice Empfehlung.
+```{r, echo=FALSE}
+threshold=60
+print(paste(sum(active_days_M17>threshold),"Regionen mit 60 tagen an denen M17 aktiv war"))
+
+
+
+active_regions_M17=data.frame(colSums(M_17[,-1]))
+```
+Diese Maßnahme hat die Größte variabilität im vergleich zu den anderen beiden Maßnahmen. Allerdings wirken Arbeitsplatzbeschränkungen nur indirekt auf die Mobilität. Vorallem wenn wir für das Homeoffice-potential der einzelnen Regionen kontrollieren.M14 scheint besser geeignet als treatment. M14 wirkt direkt auf die Mobilität und es gibt klar abgegrenzte Kontrollgruppen. Die Variabilität in M14 scheint ausreichend.    
+
+
+```{r,echo=FALSE}
+plotdata=data.frame("day"=1:625,active_regions_M17)
+colnames(plotdata)=c("day","active_region")
+ggplot(plotdata,aes(x=day,y=active_region))+geom_point()+geom_jitter(width=5,height=6,aes(color="random noise"))+labs(title ="Anzahl Regionen mit M17 für März 2020 bis November 2021",x="Tage",y="Anzahl Regionen mit M17 aktiv")+geom_hline(aes(yintercept=60))+geom_text(aes(550,60,label = "60 Regionen", vjust = -1))+theme_bw()
+
+```
+
+
+```{r, echo=FALSE}
+print(paste(sum(active_regions_M17> 60),"tage mit mehr als 60 regionen mit M17"))
+```
+Zur Exogenität: 
+Die Maßnahmen sind immer Auf Bundeslandebene beschlossen das ermöglicht uns ein weitestgehend exogenes Treatment wenn wir für Unterschiede auf Bundeslandebene Unterscheiden. Beispielsweise wie durch Moritz angesprochen die Wahlergebnisse der einzelnen Länder miteinbeziehen, OST/ West Unterscheidung, dummy für Grenzen zu Hochinzidenz-Länder (Frankreich, Dänemark, Polen, etc.),Wirtschaftsstruktur. Und was sonst noch Sinn machen könnte. 
+

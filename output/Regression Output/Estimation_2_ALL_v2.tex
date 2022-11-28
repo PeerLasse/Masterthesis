@@ -1,0 +1,101 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=2cm,right=2cm,top=0cm,bottom=1cm]{geometry}
+\usepackage{booktabs}
+\author{Peer Lasse Hinrichsen}
+\begin{document}
+\begingroup
+\centering
+\begin{tabular}{lcc}
+   \tabularnewline \midrule \midrule
+   Dependent Variable: & \multicolumn{2}{c}{moves}\\
+   Model:                                           & (1)             & (2)\\  
+   \midrule
+   \emph{Variables}\\
+   log\_inzidenz\_start                             & -0.0057$^{***}$ & -0.0039$^{***}$\\   
+                                                    & (0.0009)        & (0.0009)\\   
+   log\_inzidenz\_end                               & -0.0043$^{***}$ & -0.0015$^{*}$\\   
+                                                    & (0.0009)        & (0.0009)\\   
+   M08\_start                                       & 0.0149$^{***}$  & 0.0005\\   
+                                                    & (0.0048)        & (0.0073)\\   
+   M08\_end                                         & -0.0495$^{***}$ & -0.0164$^{**}$\\   
+                                                    & (0.0065)        & (0.0072)\\   
+   M10\_start                                       & -0.0330$^{***}$ & 0.0044\\   
+                                                    & (0.0052)        & (0.0037)\\   
+   M10\_end                                         & 0.0190$^{***}$  & 0.0080$^{**}$\\   
+                                                    & (0.0033)        & (0.0037)\\   
+   M14\_start                                       & -0.0078         & -0.0080\\   
+                                                    & (0.0065)        & (0.0071)\\   
+   M14\_end                                         & -0.0051         & 0.0027\\   
+                                                    & (0.0065)        & (0.0071)\\   
+   M17\_start                                       & 0.0009          & -0.0082\\   
+                                                    & (0.0039)        & (0.0053)\\   
+   M17\_end                                         & 0.0005          & -0.0159$^{***}$\\   
+                                                    & (0.0039)        & (0.0053)\\   
+   M08\_start $\times$ Afd\_dummy\_start            & -0.0242$^{***}$ & $-4.32\times 10^{-5}$\\    
+                                                    & (0.0089)        & (0.0127)\\   
+   M08\_end $\times$ Afd\_dummy\_end                & 0.0538$^{***}$  & 0.0351$^{***}$\\   
+                                                    & (0.0126)        & (0.0126)\\   
+   M08\_start $\times$ government\_dummy\_start     & -0.0602$^{***}$ & -0.0103\\   
+                                                    & (0.0047)        & (0.0065)\\   
+   M08\_end $\times$ government\_dummy\_end         & 0.0027          & 0.0057\\   
+                                                    & (0.0064)        & (0.0065)\\   
+   Afd\_dummy\_start $\times$ M10\_start            & 0.0406$^{***}$  & 0.0089\\   
+                                                    & (0.0095)        & (0.0114)\\   
+   Afd\_dummy\_end $\times$ M10\_end                & -0.0167         & 0.0024\\   
+                                                    & (0.0113)        & (0.0113)\\   
+   government\_dummy\_start $\times$ M10\_start     & 0.0483$^{***}$  &   \\   
+                                                    & (0.0049)        &   \\   
+   Afd\_dummy\_start $\times$ M14\_start            & 0.0179$^{**}$   & 0.0204$^{**}$\\   
+                                                    & (0.0078)        & (0.0081)\\   
+   Afd\_dummy\_end $\times$ M14\_end                & 0.0156$^{**}$   & 0.0113\\   
+                                                    & (0.0078)        & (0.0080)\\   
+   government\_dummy\_start $\times$ M14\_start     & 0.0288$^{***}$  & 0.0270$^{***}$\\   
+                                                    & (0.0073)        & (0.0075)\\   
+   government\_dummy\_end $\times$ M14\_end         & 0.0219$^{***}$  & 0.0161$^{**}$\\   
+                                                    & (0.0073)        & (0.0075)\\   
+   Afd\_dummy\_start $\times$ M17\_start            & -0.0073         & -0.0012\\   
+                                                    & (0.0068)        & (0.0070)\\   
+   Afd\_dummy\_end $\times$ M17\_end                & 0.0047          & 0.0122$^{*}$\\   
+                                                    & (0.0068)        & (0.0069)\\   
+   M08\_start\_W                                    &                 & -0.0392$^{***}$\\   
+                                                    &                 & (0.0132)\\   
+   M08\_end\_W                                      &                 & -0.1011$^{***}$\\   
+                                                    &                 & (0.0134)\\   
+   log\_inzidenz\_start\_W                          &                 & -0.0335$^{***}$\\   
+                                                    &                 & (0.0041)\\   
+   log\_inzidenz\_end\_W                            &                 & -0.0032\\   
+                                                    &                 & (0.0041)\\   
+   M10\_start\_W                                    &                 & 0.0214$^{***}$\\   
+                                                    &                 & (0.0074)\\   
+   M10\_end\_W                                      &                 & 0.0338$^{***}$\\   
+                                                    &                 & (0.0074)\\   
+   M14\_start\_W                                    &                 & 0.0223$^{***}$\\   
+                                                    &                 & (0.0066)\\   
+   M14\_end\_W                                      &                 & -0.0207$^{***}$\\   
+                                                    &                 & (0.0066)\\   
+   M17\_start\_W                                    &                 & 0.0032\\   
+                                                    &                 & (0.0067)\\   
+   M17\_end\_W                                      &                 & 0.0278$^{***}$\\   
+                                                    &                 & (0.0067)\\   
+   \midrule
+   \emph{Fixed-effects}\\
+   start\_krs                                       & Yes             & Yes\\  
+   end\_krs                                         & Yes             & Yes\\  
+   obs                                              & Yes             & Yes\\  
+   date                                             & Yes             & Yes\\  
+   \midrule
+   \emph{Fit statistics}\\
+   Observations                                     & 8,083,405       & 8,083,405\\  
+   Squared Correlation                              & 0.99667         & 0.99675\\  
+   \midrule \midrule
+   \multicolumn{3}{l}{\emph{Heteroskedasticity-robust standard-errors in parentheses}}\\
+   \multicolumn{3}{l}{\emph{Signif. Codes: ***: 0.01, **: 0.05, *: 0.1}}\\
+\end{tabular}
+\par\endgroup
+\end{document}

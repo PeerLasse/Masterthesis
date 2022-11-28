@@ -1,0 +1,68 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=2cm,right=2cm,top=0cm,bottom=1cm]{geometry}
+\usepackage{booktabs}
+\author{Peer Lasse Hinrichsen}
+\begin{document}
+\begingroup
+\centering
+\begin{tabular}{l c c c}
+   \tabularnewline \midrule \midrule
+   Dependent Variable: & \multicolumn{3}{c}{moves}\\
+   Model:                                           & Short distance        & Long distance  		& Full data\\  
+   \midrule
+   \emph{Variables}\\
+   
+   M08\_start                                       & -0.0745$^{***}$ 		& -0.0480$^{***}$			& 0.0005\\   
+                                                    & (0.0150) 				& (0.0181)					& (0.0073)\\     
+   M08\_end                                         & -0.0714$^{***}$		& -0.3362$^{***}$			& -0.0164$^{**}$\\
+                                                    & (0.0150)				& (0.0134)					& (0.0072)\\  
+   M10\_start                                       & 0.0629$^{***}$			& -0.1845$^{***}$			& 0.0044\\    
+                                                    & (0.0143)				& (0.0186)					& (0.0037)\\   
+   M10\_end                                         & 0.0603$^{***}$			& 0.0252$^{***}$			& 0.0080$^{**}$\\    
+                                                    & (0.0143)				& (0.0062)					& (0.0037)\\    
+   M14\_start                                       & 0.0020					& 0.2702$^{***}$			& -0.0080\\  
+                                                    & (0.0064)				& (0.0097)					& (0.0071)\\  
+   M14\_end                                         & 0.0020					& 0.3738$^{***}$			& 0.0027\\    
+                                                    & (0.0064)				& (0.0111)					& (0.0071)\\   
+   M17\_start                                       & -0.0126$^{**}$			& -0.0596$^{***}$			& 0.0128\\  
+                                                    & (0.0057)				& (0.0089)					& (109.0)\\   
+   M17\_end                                         & -0.0157$^{***}$		& -0.1333$^{***}$			& -0.0159$^{***}$\\    
+                                                    & (0.0057)				& (0.0084)					& (0.0053)\\    
+   M08\_start\_W                                    & -0.0488$^{**}$			& -0.0097					& -0.0392$^{***}$\\   
+                                                    & (0.0209)				& (0.0107)					& (0.0132)\\   
+   M08\_end\_W                                      & -0.0410$^{*}$			& -0.1431$^{***}$			& -0.1011$^{***}$\\    
+                                                    & (0.0210)				& (0.0115)					& (0.0134)\\   
+   M10\_start\_W                                    & $-3.44\times 10^{-5}$	& 0.0078					& 0.0214$^{***}$\\  
+                                                    & (0.0104)				& (0.0090)					& (0.0074)\\    
+   M10\_end\_W                                      & 0.0092					& 0.0021					& 0.0338$^{***}$\\    
+                                                    & (0.0104)				& (0.0095)					& (0.0074)\\   
+   M14\_start\_W                                    & 0.0085					& -0.0988$^{***}$			& 0.0223$^{***}$\\  
+                                                    & (0.0085)				& (0.0079)					& (0.0066)\\  
+   M14\_end\_W                                      & -0.0025				& -0.1943$^{***}$			& -0.0207$^{***}$\\     
+                                                    & (0.0085)				&(0.0080)					& (0.0066)\\   
+   M17\_start\_W                                    & 0.0045					& 0.0814$^{***}$			& 0.0032\\
+                                                    & (0.0088)				& (0.0104)					& (0.0067)\\   
+   M17\_end\_W                                      & 0.0252$^{***}$			& 0.1542$^{***}$			& 0.0278$^{***}$\\   
+                                                    & (0.0088)				& (0.0097)					& (0.0067)\\   
+   \midrule
+   \emph{Fixed-effects}\\
+   time                                             & Yes 					& Yes						& Yes\\  
+   origin                                           & Yes						& Yes						& Yes\\  
+   destination                                      & Yes						& Yes						& Yes\\  
+   origin-destination                               & Yes						& Yes						& Yes\\  
+   \midrule
+   \emph{Fit statistics}\\
+   Observations                                     & 1,196,360 				& 6,885,395					& 8,083,405\\  
+   Squared Correlation                              & 0.99694				& 0.84703					& 0.99675\\ 
+   \midrule \midrule
+   \multicolumn{3}{l}{\emph{Heteroskedasticity-robust standard-errors in parentheses}}\\
+   \multicolumn{3}{l}{\emph{Signif. Codes: ***: 0.01, **: 0.05, *: 0.1}}\\
+\end{tabular}
+\par\endgroup
+\end{document}

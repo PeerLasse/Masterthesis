@@ -1,0 +1,22 @@
+library(readr)
+library(readxl)
+library(tidyverse)
+library(spdep)
+library(spatialreg)
+library(plm)
+library(splm)
+library(fixest)
+library(feather)
+setwd("C:/Users/peerl/OneDrive/Desktop/Studium/Masterarbeit/Masterthesis/data/processed")
+source("C:/Users/peerl/OneDrive/Desktop/Studium/Masterarbeit/Masterthesis/source/functions/dist_approx.R")
+############################ Load Data #########################################
+data=read_feather("V2SLX_data_gravitation.feather")
+
+selected=data %>% select(c(9:12,17,19:23))
+cor.mat=cor(selected)
+library(corrplot)
+corrplot(cor.mat)
+
+library(xtable)
+setwd("C:/Users/peerl/OneDrive/Desktop/Studium/Masterarbeit/Masterthesis/output/summarys")
+print(xtable(cor.mat, type = "latex"), file = "correlation_spatial_weights.tex")
