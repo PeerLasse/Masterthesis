@@ -10,8 +10,8 @@ library(Matrix)
 library(spdep)
 
 ##########################set working directory and load data###############################################
-setwd("C:/Users/peerl/OneDrive/Desktop/Studium/Masterarbeit/Masterthesis/Source/data_wrangling/Clean/Daten")
-mobility <- read_csv("mobility_teralytics_kreis_nol.csv")
+setwd("")
+mobility <- read_csv("")
 mobility=read_csv("temp1.csv")[,-1]
 
 ########################## Change dataformat to something we can work with more easily.###########################
@@ -144,7 +144,7 @@ colnames(Reg_home)[-1]=gsub("start","end",colnames(Reg_home[-1]))
 data2=left_join(data2,Reg_home,by="end_krs")
 
 #read and join data on election results btw. 2017
-wahlen=read.csv("Wahlergebnisse_Bundestagswahl_2017_länder.csv",sep=";")
+wahlen=read.csv("Wahlergebnisse_Bundestagswahl_2017_lÃ¤nder.csv",sep=";")
 wahlen$NR=c(8,9,11,12,4,2,6,13,3,5,7,10,14,15,1,16)
 data2=mutate(data2,"NR"=floor(data2$start_krs/1000))
 colnames(wahlen)[c(2,3,4,6)]=c("CDU_start","SPD_start","AFD_start","Linke_start")
@@ -177,7 +177,7 @@ rm(list=setdiff(ls(),"data2"))
 data2=arrange(data2,date,start_krs,end_krs)
 
 #Source Weight_functions
-setwd("C:/Users/peerl/OneDrive/Desktop/Studium/Masterarbeit/Masterthesis/Source/data_wrangling/functions")
+setwd("")
 source("create.weights.R")
 source("apply.weights.R")
 
